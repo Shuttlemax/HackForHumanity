@@ -23,21 +23,24 @@ async def add_request_data(request: RequestSchema = Body(...)):
 async def get_requests():
     requests = await retrieve_requests()
     if requests:
+        requests = total_data(requests)
         return ResponseModel(requests, "requests data retrieved successfully")
     return ResponseModel(requests, "Empty list returned")
 
 #helpers
 
 #requests is a list of dictionaries
-# def total_data(requests: list) -> dict:
-#     #dictionary of zips that holds a dictionary of the items
-#     totals = {}
-#     for request in requests: #request is a dict
-#         zip = request["zip"]
+def total_data(requests: list) -> dict:
+    #dictionary of zips that holds a dictionary of the items
+    totals = {}
+    for request in requests: #request is a dict
+        zip = request["zip"]
+        for key in request.keys():
+            if key != "zip":
+                totals[zip][key] += request[key]
 
-#         if totals.has_key("zip"):
-#             for key in request.keys():
-#                 totals["zip"]
+    return totals
+
 
 
 
