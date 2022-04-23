@@ -413,3 +413,42 @@
     }
 }
 
+.Head h1 {
+    padding-top: 3%;
+    background-image: linear-gradient(to top, #11034d 0%, #050118 100%);
+    font-family: "Kumbh Sans", sans-serif;
+    text-align: center;
+    font-size: 3.5rem;
+    color: 	#FFCCFF;
+}
+
+.identify{ 
+    background-color: rgb(70, 143, 238);
+    background-image: linear-gradient(to top, #6997f5 0%, #11034d 100%);
+    font-size: 2rem;
+    font-family:"Kumbh Sans", sans-serif;
+    color: white;
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    padding: 3%;
+    border:1px solid black;
+    
+}
+
+.a  {
+
+    padding: 3%;
+    
+
+}
+
+.b{
+    padding: 3%;
+    
+}
+
+.c{
+    padding: 3%;
+    
+}
