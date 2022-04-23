@@ -36,7 +36,6 @@
     
     <label>Submission details</label>
     <div id="results"></div>
-    <a href ="/admin/schedule_dropoff.html"> Resubmit </a>
     <script>
         const resultsList = document.getElementById('results')
         new URLSearchParams(window.location.search).forEach((value,name) =>
@@ -45,6 +44,15 @@
             resultsList.append(document.createElement('br'))
         })
     </script>
+
+    <a href ="/admin/schedule_dropoff.html">
+        <button>
+            Resubmit
+        </button>
+    </a>
+    <button onclick= "confirmDropoff()">
+        Confirm
+    </button>
     
     <!-- Write your comments here -->
 
