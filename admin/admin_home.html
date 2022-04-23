@@ -39,6 +39,26 @@
             schedule dropoff
         </button>
     </a>
+    <p id = "requestdata">
+
+    </p>
+    <script>
+        let response = await fetch("http://localhost:8000/Request/",
+            {
+            method: 'POST',
+            mode: 'cors',
+            headers: {
+                'Content-Type': 'application/json',
+                'Access-Control-Allow-Origin':'*'
+                },
+        }).then(response => response.json());
+
+        console.log(response)
+    var text = document.getElementById("requestdata").value;
+    text = JSON.stringify(response)
+
+    
+    </script>
     
     <!-- Write your comments here -->
 
