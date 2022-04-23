@@ -71,6 +71,52 @@
         <br>
         <br>
         <br>
+        
+        <p id = "request">
+
+        </p>
+        <script>
+            let response = fetch("http://localhost:8000/Request/",
+                {
+                method: 'GET',
+                mode: 'cors',
+                headers: {
+                    'Content-Type': 'application/json',
+                    'Access-Control-Allow-Origin':'*'
+                    },
+            }).then(response => response.json())
+            .then(data => {
+                console.log(data)
+                //document.getElementById("request").innerHTML = data[document.getElementById("zipcode").value];
+                var zip = document.getElementById("zipcode").value;
+                for(const dic in data)
+                {
+                  if(dic[zip])
+                  {
+                    document.getElementById("request").innerHTML = data[];
+                    console.log(dic)
+                    break;
+                  }
+                  console.log('nope:'+ dic)
+                }
+                // console.log(data)
+                // var txt = ""
+                // for (const [zip, dict] of Object.entries(data)){
+                //     txt+= `${zip}:    `
+                //     for (const [key, value] of Object.entries(dict)) {
+                //             txt +=`${key}:   ${value}\n`
+                //     }
+                // }
+                // console.log(txt)
+                // console.log("tits")
+                // //JSON.stringify(data)
+                // document.getElementById("requestdata").innerHTML = txt;
+            });
+    
+    
+        
+        </script>
+        <br>
       </p>
       <script src="zipc.js"></script>
     </div>

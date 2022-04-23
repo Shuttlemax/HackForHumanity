@@ -23,7 +23,7 @@ async def add_request_data(request: RequestSchema = Body(...)):
 async def get_requests():
     requests = await retrieve_requests()
     if requests:
-        requests = total_data(requests)
+        #requests = total_data(requests)
         return ResponseModel(requests, "requests data retrieved successfully")
     return ResponseModel(requests, "Empty list returned")
 

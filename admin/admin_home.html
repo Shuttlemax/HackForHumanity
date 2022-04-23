@@ -33,32 +33,62 @@
             </ul>
         </div>
     </nav>
-    
+    <br>
+    <br>
+
+    <br>
+    <dev class = ho>
+    <h1>
+        Dropoff
+    </h1>
     <a href="schedule_dropoff.html">
         <button>
             schedule dropoff
         </button>
     </a>
+    </dev>
+    <dev class = "sample">
+    <br>
+    <br>
+    <br>
+    <h1>
+        List of Total Entries from Requests:
+        <br>
+    </h1>
     <p id = "requestdata">
 
     </p>
     <script>
-        let response = await fetch("http://localhost:8000/Request/",
+        let response = fetch("http://localhost:8000/Request/",
             {
-            method: 'POST',
+            method: 'GET',
             mode: 'cors',
             headers: {
                 'Content-Type': 'application/json',
                 'Access-Control-Allow-Origin':'*'
                 },
-        }).then(response => response.json());
+        }).then(response => response.json())
+        .then(data => {
+            console.log(data)
+            document.getElementById("requestdata").innerHTML = JSON.stringify(data);
+            // console.log(data)
+            // var txt = ""
+            // for (const [zip, dict] of Object.entries(data)){
+            //     txt+= `${zip}:    `
+            //     for (const [key, value] of Object.entries(dict)) {
+            //             txt +=`${key}:   ${value}\n`
+            //     }
+            // }
+            // console.log(txt)
+            // console.log("tits")
+            // //JSON.stringify(data)
+            // document.getElementById("requestdata").innerHTML = txt;
+        });
 
-        console.log(response)
-    var text = document.getElementById("requestdata").value;
-    text = JSON.stringify(response)
 
     
     </script>
+    </dev>
     
     <!-- Write your comments here -->
 

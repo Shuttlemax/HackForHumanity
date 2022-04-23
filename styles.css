@@ -476,3 +476,31 @@
     color: white;
     background-image: linear-gradient(to top, #810d3d 0%, #6997f5 100%);
 }
+
+.sample {
+    justify-content: center;
+    align-items: center;
+    font-family: "Kumbh Sans", sans-serif;
+    text-align: center;
+    font-size: 1.5rem;
+    padding: 4%;
+    
+
+}
+
+.ho button{
+    text-align: center;
+    align-items: center;
+    padding: 3%;
+    font-size: 3rem;
+
+    
+}
+
+.hom {
+    background: #6997f5;
+    text-align: center;
+    align-items: center;
+    padding: 10%;
+    font-size: 3rem;
+}
