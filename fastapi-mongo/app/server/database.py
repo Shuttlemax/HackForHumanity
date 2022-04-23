@@ -5,67 +5,29 @@ MONGO_DETAILS = "mongodb://localhost:27017"
 
 client = motor.motor_asyncio.AsyncIOMotorClient(MONGO_DETAILS)
 
-database = client.students
+database = client.requests
 
-student_collection = database.get_collection("students_collection")
-
+request_collection = database.get_collection("requests_collection")
 
 # helpers
 
-
-def student_helper(student) -> dict:
+def request_helper(request) -> dict:
     return {
-        "id": str(student["_id"]),
-        "fullname": student["fullname"],
-        "email": student["email"],
-        "course_of_study": student["course_of_study"],
-        "year": student["year"],
-        "GPA": student["gpa"],
+        "zip": str(request["zip"]),
+        "canned": request["canned"],
+        "water": request["water"],
+        "nonperish": request["nonperish"],
     }
 
+# Retrieve all requests present in the database
+async def retrieve_requests():
+    requests = []
+    async for request in request_collection.find():
+        requests.append(request_helper(request))
+    return requests
 
-# CRUD
-
-# Retrieve all students present in the database
-async def retrieve_students():
-    students = []
-    async for student in student_collection.find():
-        students.append(student_helper(student))
-    return students
-
-
-# Add a new student into to the database
-async def add_student(student_data: dict) -> dict:
-    student = await student_collection.insert_one(student_data)
-    new_student = await student_collection.find_one({"_id": student.inserted_id})
-    return student_helper(new_student)
-
-
-# Retrieve a student with a matching ID
-async def retrieve_student(id: str) -> dict:
-    student = await student_collection.find_one({"_id": ObjectId(id)})
-    if student:
-        return student_helper(student)
-
-
-# Update a student with a matching ID
-async def update_student(id: str, data: dict):
-    # Return false if an empty request body is sent.
-    if len(data) < 1:
-        return False
-    student = await student_collection.find_one({"_id": ObjectId(id)})
-    if student:
-        updated_student = await student_collection.update_one(
-            {"_id": ObjectId(id)}, {"$set": data}
-        )
-        if updated_student:
-            return True
-        return False
-
-
-# Delete a student from the database
-async def delete_student(id: str):
-    student = await student_collection.find_one({"_id": ObjectId(id)})
-    if student:
-        await student_collection.delete_one({"_id": ObjectId(id)})
-        return True
+# Add a new request into to the database
+async def add_request(request_data: dict) -> dict:
+    request = await request_collection.insert_one(request_data)
+    new_request = await request_collection.find_one({"_id": request.inserted_id})
+    return request_helper(new_request)
