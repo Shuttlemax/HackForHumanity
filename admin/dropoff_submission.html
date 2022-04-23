@@ -33,29 +33,20 @@
             </ul>
         </div>
     </nav>
-    <div>
-        <title>
-            dropoff information
-        </title>
-    </div>
-    <label>Amount Request:</label>
-    <form action = "dropoff_submission.html">
-        <label for = "date">Date<input type = "date" placeholder="date" name = "date" id = "date" value="date" min ="" required></label><br>
-        <label for= "address">Address<input type="text" id = "address" ></label><br>
-        <label for="city">City<input type="text" name="city" id="city" required></label><br>
-        <label for="state">State<input type="text" name="state" id="state" required></label><br>
-        <label for="zipcode">Zipcode<input type="text" name="zipcode" id="zipcode" required></label><br>
-        <label for="items">Items available
-            <select multiple>
-                <option></option>
-            </select>
-        </label><br>
-        <label for=""><input type="hidden" name="" id="" value=""></label><br>
-        <label for=""><input type="hidden" name="" id="" value=""></label><br>
-        <label for=""><input type="hidden" name="" id="" value=""></label><br>
-        <button type="submit">Submit</button>
-
-    </form>
+    
+    <label>Submission details</label>
+    <div id="results"></div>
+    <a href ="/admin/schedule_dropoff.html"> Resubmit </a>
+    <script>
+        const resultsList = document.getElementById('results')
+        new URLSearchParams(window.location.search).forEach((value,name) =>
+        {
+            resultsList.append(`${name}: ${value}`)
+            resultsList.append(document.createElement('br'))
+        })
+    </script>
+    
+    <!-- Write your comments here -->
 
 </body>
 </html>
