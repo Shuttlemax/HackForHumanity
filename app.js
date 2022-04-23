@@ -1,4 +1,4 @@
-function sending(){
+async function sending(){
 
     var fname = document.getElementById("fname").value;
     var lname = document.getElementById("lname").value;
@@ -16,18 +16,30 @@ function sending(){
     var bat = document.getElementById("battery").value;
 
     var holder = {};
+    console.log("WORKING  ------------------------------------------");
 
-    holder[zipcode] = zip;
-    holder[canned] = can;
-    holder[water] = W;
-    holder[nonperish] = nonp;
+    holder["zip"] = zip;
+    holder["canned"] = can;
+    holder["water"] = W;
+    holder["nonperish"] = nonp;
     //holder[firstaid] = aid;
     //holder[shirt] = sh;
     //holder[sock] = scks;
     //holder[toilet] = tp;
     //holder[battery] = bat
 
-    fetch("http://128.62.16.135", holder)
+    //fetch("http://127.0.0.1:8000", holder)
+
+    let response = await fetch("http://localhost:8000/Request/",
+    {
+        method: 'POST',
+        mode: 'cors',
+        headers: {
+          'Content-Type': 'application/json',
+          'Access-Control-Allow-Origin':'*'
+        },
+        body: JSON.stringify(holder)
+    }).then(response => response.json());
 
 }
 
