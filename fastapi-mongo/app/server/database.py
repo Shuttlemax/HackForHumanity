@@ -23,6 +23,9 @@ def student_helper(student) -> dict:
         "GPA": student["gpa"],
     }
 
+
+# CRUD
+
 # Retrieve all students present in the database
 async def retrieve_students():
     students = []
