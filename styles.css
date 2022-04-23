@@ -452,3 +452,27 @@
     padding: 3%;
     
 }
+
+.zips {
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    padding: 4%;
+    font-family: "Kumbh Sans", sans-serif;
+    text-align: center;
+    font-size: 1.5rem;
+    color: white;
+    background-image: linear-gradient(to top, #6997f5 0%, #11034d 100%);
+
+}
+
+.Sub {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-family: "Kumbh Sans", sans-serif;
+    text-align: center;
+    font-size: 1.5rem;
+    color: white;
+    background-image: linear-gradient(to top, #810d3d 0%, #6997f5 100%);
+}
